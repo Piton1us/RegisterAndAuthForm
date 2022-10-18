@@ -1,9 +1,10 @@
 <?
-
+//Получение даннных с формы
 $login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
 $pass = filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
 $name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
 
+    // Проверка написания данных
     if(mb_strlen($login) < 5 || mb_strlen($login) > 90){
         echo"Не допустимая длина логина";
         exit();
@@ -15,13 +16,17 @@ $name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
         exit();
     }
 
+    //Кодирование пароля
     $pass = md5($pass."gdhjsexc1");
 
+    //Подключение к БД
     $mysql = new mysqli('localhost','root','root','register-bd');
+    //Запрос на получение данных из даблицы users
     $mysql->query("INSERT INTO `users` (`login`,`pass`,`name`) VALUES('$login','$pass','$name')");
-
+    //Выход из БД (Обязательно)
     $mysql->close();
 
+    //Перенос на другую страницу
     header('Location:/WebBook');
     
 
