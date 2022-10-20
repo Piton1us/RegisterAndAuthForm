@@ -24,10 +24,10 @@ $pass = filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
     }
 
     //Создание cookie
-    setcookie('user',$user['name'], time() + 3600, "/WebBook");
+    setcookie('user',$user['name'], time() + 3600, "/RegisterAndAuthForm");
 
 
     $mysql->close();
 
-    header('Location:/WebBook');
+    header('Location:/RegisterAndAuthForm');
 ?>

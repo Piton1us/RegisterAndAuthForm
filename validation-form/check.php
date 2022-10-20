@@ -27,7 +27,7 @@ $name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
     $mysql->close();
 
     //Перенос на другую страницу
-    header('Location:/WebBook');
+    header('Location:/RegisterAndAuthForm');
     
 
 ?>
