@@ -23,6 +23,9 @@ $name = filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);
     $mysql = new mysqli('localhost','root','root','register-bd');
     //Запрос на получение данных из даблицы users
     $mysql->query("INSERT INTO `users` (`login`,`pass`,`name`) VALUES('$login','$pass','$name')");
+
+    setcookie('user',$user['name'], time() + 3600, "/RegisterAndAuthForm");
+
     //Выход из БД (Обязательно)
     $mysql->close();
 
